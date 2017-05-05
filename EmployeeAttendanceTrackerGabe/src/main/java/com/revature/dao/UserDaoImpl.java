@@ -28,6 +28,12 @@ public class UserDaoImpl implements UserDao {
 			int numRowsAffected = statement.executeUpdate(sql);	//this argument is not precompiled as a paramater
 			System.out.println("hi");							//use prepared statements to prevent sql injections by users
 			
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -44,10 +50,19 @@ public class UserDaoImpl implements UserDao {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				int id = rs.getInt("U_ID");
+				int roleId = rs.getInt("UR_ID");
 				user = new UserBean(un, pw);
 				user.setUserID(id);
+				user.setUserRoleID(roleId);
 				break;
 			}
+			
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

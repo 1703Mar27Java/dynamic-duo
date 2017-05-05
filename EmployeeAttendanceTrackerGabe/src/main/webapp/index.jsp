@@ -29,7 +29,7 @@
 </div><!-- end of nav div -->
 </div><!-- end of container-fluid div -->
 
-<form action="UserLogin" method="post">
+<form action="Login" method="post">
   <div class="form-group">
     <label for="username">Username:</label>
     <input type="text" class="form-control" id="email" name="userName">
@@ -43,7 +43,6 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-
 
 </body>
 </html>
