@@ -1,0 +1,4 @@
+Controllers\UserController.class
+com\revature\util\ConnectionUtil.class
+com\revature\beans\UserRoleBean.class
+com\revature\beans\UserBean.class
