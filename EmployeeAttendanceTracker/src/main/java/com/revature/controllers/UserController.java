@@ -56,9 +56,34 @@ public class UserController {
 		//m.addAttribute("person",new UserBean());
 		return "tech";
 	}
+	
+	//register
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public String register(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
+			@RequestParam(value="password", required=false) String password*/){
+		
+		//this is where the db checking will go perhaps
+				if (br.hasErrors()){
+					Object errors = br.getAllErrors();
+					m.put("errors",errors);
+					return "index";
+				}else{
+					if (!(userForm.getPassword()).equals(userForm.getPassword2())){
+						m.put("errors", "Passwords have to match");
+						return "index";
+					}
+					else{
+						m.put("firstName", userForm.getFirstName());
+						m.put("password", userForm.getPassword());
+					}
+				}
+				//create (for a login) a loginService class 
+				//call authUser 
+				return "emp";
+	}
 		
 	@RequestMapping(value="/log",method=RequestMethod.POST)
-	public String addPerson(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
+	public String login(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
 							@RequestParam(value="password", required=false) String password*/){
 		//this is where the db checking will go perhaps
 		if (br.hasErrors()){

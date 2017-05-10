@@ -48,12 +48,12 @@
 
     <label for="username">Username:</label>
     <form:input class="form-control" path="userName" size="30"/>
-    <form:errors path="userName" cssClass="error"/>
+    <form:errors path="userName" cssClass="error" style="color:red; font-style:italic"/>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
     <form:password class="form-control" path="password" size="30"/>
-    <form:errors path="password" cssClass="error"/>
+    <form:errors path="password" cssClass="error" style="color:red; font-style:italic"/>
   </div>
   <div class="checkbox">
     <label><input type="checkbox"> Remember me</label>
@@ -64,20 +64,22 @@
 </form:form>
 <button id ="RegisterButton" type="submit" class="btn btn-default">Register</button>
 
-<form id = "RegisterForm" method="POST" action="loggedIn" commandName="user">
+<form:form id = "RegisterForm" action="register" commandName="userForm">
   <div class="form-group">
   <br/>
-
-    <label for="username">Username:</label>
-    <input type="text" class="form-control" id="email"  name="userName">
+ 	<label for="username">Username:</label>
+    <form:input class="form-control" path="userName" size="30"/>
+    <form:errors path="userName" cssClass="error" style="color:red; font-style:italic"/>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd"  name="password">
+    <form:password class="form-control" path="password" size="30"/>
+    <form:errors path="password" cssClass="error" style="color:red; font-style:italic"/>
   </div>
    <div class="form-group">
     <label for="pwd">Confirm Password:</label>
-    <input type="password" class="form-control" id="pwd"  name="password">
+    <form:password class="form-control" path="password2" size="30"/>
+    <label style="color:red; font-style:italic">passwords have to match</label>
   </div>
   <div class="checkbox">
     <label><input type="checkbox"> Remember me</label>
@@ -85,7 +87,7 @@
   <button id ="RegisterSubmit" type="submit" class="btn btn-default">Submit</button>
 <br/>
 <br/>
-</form>
+</form:form>
 </div>
 
 <div class="col-md-4"></div>

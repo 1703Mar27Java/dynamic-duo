@@ -26,6 +26,8 @@ public class UserBean {
 		@Size(min=6, max=30)
 		private String password;
 		
+		private String password2;
+		
 		//@NotNull(message="Please enter a valid email address")
 		//@Size(min=7)
 		private String emailAddress;
@@ -69,6 +71,18 @@ public class UserBean {
 		}
 		public void setUR_ID(int uR_ID) {
 			UR_ID = uR_ID;
+		}
+		public String getPassword2() {
+			return password2;
+		}
+		public void setPassword2(String password2) {
+			this.password2 = password2;
+		}
+		public String getEmailAddress() {
+			return emailAddress;
+		}
+		public void setEmailAddress(String emailAddress) {
+			this.emailAddress = emailAddress;
 		}
 		
 }
