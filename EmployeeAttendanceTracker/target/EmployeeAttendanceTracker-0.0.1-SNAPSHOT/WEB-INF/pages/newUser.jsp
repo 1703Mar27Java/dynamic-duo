@@ -107,11 +107,10 @@ $(document).ready(
 	//JQUERY
 	//handle notifications
 	function(){
-		$("#Employee").on("click",function(){
+		$("#userrole").val("Default");
+		$("#userrole").on("click",function(){
+			  $("#userrole").html('Employee');
 			  $("#hiddenRoleForm").val('Employee');
-		})
-		$("#Manager").on("click",function(){
-			  $("#hiddenRoleForm").val('Manager');
 		})
 	}
 );

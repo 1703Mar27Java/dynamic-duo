@@ -44,6 +44,7 @@
   <button type="submit" class="btn btn-default">View Timeclock History</button>
 <p>Employee  info would go here to check out their clock in/clock out </p>
 <h3>Welcome ${userForm.userName}! You have logged in successfully.</h3>
+<h3>You are a ${userForm.userRole}</h3>
 
 </div>
 

@@ -1,4 +1,5 @@
 package com.revature.beans;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -29,12 +30,15 @@ public class UserBean {
 		private String password2;
 		
 		//@NotNull(message="Please enter a valid email address")
-		//@Size(min=7)
+		//@Email
 		private String emailAddress;
 		//@NotNull
 		private int U_ID;
 		//@NotNull
 		private int UR_ID;
+		
+		//@NotNull
+		private String userRole;
 		
 		public String getFirstName() {
 			return firstName;
@@ -83,6 +87,12 @@ public class UserBean {
 		}
 		public void setEmailAddress(String emailAddress) {
 			this.emailAddress = emailAddress;
+		}
+		public String getUserRole() {
+			return userRole;
+		}
+		public void setUserRole(String userRole) {
+			this.userRole = userRole;
 		}
 		
 }
