@@ -1,5 +1,6 @@
 package com.revature.controllers;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.revature.beans.UserBean;
 
@@ -27,8 +29,10 @@ public class UserController {
 	
 	//home page
 	@RequestMapping(value="/log",method=RequestMethod.GET)
-	public String enterPersonInfo(Model m){
-		m.addAttribute("person",new UserBean());
+	public String enterPersonInfo(Map<String, Object> m){
+		UserBean userForm = new UserBean();
+		m.put("userForm", userForm);
+		//m.addAttribute("person",new UserBean());
 		return "index";
 	}
 	
@@ -53,20 +57,20 @@ public class UserController {
 		return "tech";
 	}
 		
-	
-	@RequestMapping(value="/loggedIn",method=RequestMethod.POST)
-	public String addPerson(@Valid UserBean user, BindingResult br, Model m){
+	@RequestMapping(value="/log",method=RequestMethod.POST)
+	public String addPerson(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
+							@RequestParam(value="password", required=false) String password*/){
+		//this is where the db checking will go perhaps
 		if (br.hasErrors()){
 			Object errors = br.getAllErrors();
-			m.addAttribute("errors",errors);
-			return "loggedIn";
+			m.put("errors",errors);
+			return "index";
 		}else{
-			m.addAttribute("firstName", user.getFirstName());
-			m.addAttribute("lastName", user.getLastName());
+			m.put("firstName", userForm.getFirstName());
+			m.put("password", userForm.getPassword());
 		}
-		
 		//create (for a login) a loginService class 
 		//call authUser 
-		return "contact";
+		return "loggedIn";
 	}
 }

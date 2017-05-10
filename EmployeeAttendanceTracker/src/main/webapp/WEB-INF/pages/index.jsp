@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -42,16 +42,18 @@
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form">
  
-<form id = "LoginForm" method="POST" action="loggedIn" commandName="user">
+<form:form id = "LoginForm" action="log" commandName="userForm">
   <div class="form-group">
   <br/>
 
     <label for="username">Username:</label>
-    <input type="text" class="form-control" id="email" path="userName">
+    <form:input class="form-control" path="userName" size="30"/>
+    <form:errors path="userName" cssClass="error"/>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd"  path="password">
+    <form:password class="form-control" path="password" size="30"/>
+    <form:errors path="password" cssClass="error"/>
   </div>
   <div class="checkbox">
     <label><input type="checkbox"> Remember me</label>
@@ -59,7 +61,7 @@
   <button id ="LoginSubmit" type="submit" class="btn btn-default">Submit</button>
 <br/>
 <br/>
-</form>
+</form:form>
 <button id ="RegisterButton" type="submit" class="btn btn-default">Register</button>
 
 <form id = "RegisterForm" method="POST" action="loggedIn" commandName="user">
