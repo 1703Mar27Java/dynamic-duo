@@ -71,6 +71,6 @@ public class UserController {
 		}
 		//create (for a login) a loginService class 
 		//call authUser 
-		return "loggedIn";
+		return "emp";
 	}
 }
