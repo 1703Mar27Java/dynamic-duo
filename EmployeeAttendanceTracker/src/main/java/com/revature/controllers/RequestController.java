@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/request")
 public class RequestController {
 	//about
-	@RequestMapping(value="/history",method=RequestMethod.GET)
+	@RequestMapping(value="/history",method=RequestMethod.POST)
 	public String getReqHistory(Model m){
 		//m.addAttribute("person",new UserBean());
 		return "about";

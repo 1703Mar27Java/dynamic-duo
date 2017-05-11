@@ -56,16 +56,17 @@
 
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form">
-<form>
+<form:form id = "ReqsByLastname" action="../request/history" commandName="userForm">
   <div class="form-group">
   <br/>
     <label for="username">Input Employee Last Name:</label>
-    <input type="text" class="form-control" id="email">
+    <form:input class="form-control" path="userName" size="30"/>
+    <!--<input type="text" class="form-control" id="email">-->
   </div>
   <button type="submit" class="btn btn-default">Search</button>
 <br/>
 <br/>
-</form>
+</form:form>
 <br/>
 <div class="col-md-4"></div>
 </div>

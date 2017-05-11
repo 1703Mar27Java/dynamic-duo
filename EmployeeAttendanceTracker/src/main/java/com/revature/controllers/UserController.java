@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.revature.beans.UserBean;
+import com.revature.dao.DaoImpl;
 
 @Controller
 @RequestMapping("/user")
@@ -82,6 +83,7 @@ public class UserController {
 				return "newUser";
 	}
 	
+	//Capitol building singalong
 	//register
 		@RequestMapping(value="/newUser",method=RequestMethod.POST)
 		public String setNewUser(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
@@ -115,17 +117,28 @@ public class UserController {
 	@RequestMapping(value="/log",method=RequestMethod.POST)
 	public String login(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
 							@RequestParam(value="password", required=false) String password*/){
+		
+		//DaoImpl userDao = new DaoImpl();
+		/*UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
+		
+		if (user != null){
+			return "emp";
+		}
+		else{
+			return "index";
+		}*/
+		
+		return "emp";
 		//this is where the db checking will go perhaps
-		if (br.hasErrors()){
+		/*if (br.hasErrors()){
 			Object errors = br.getAllErrors();
 			m.put("errors",errors);
 			return "index";
 		}else{
 			m.put("userName", userForm.getUserName());
 			m.put("password", userForm.getPassword());
-		}
+		}*/
 		//create (for a login) a loginService class 
 		//call authUser 
-		return "emp";
 	}
 }

@@ -6,39 +6,73 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 import javax.validation.constraints.*;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
+@Entity
+@Table(name="USERS")
 @Component(value="User")
-
-public class UserBean {
+public class UserBean implements Serializable {
+	
+		public UserBean(){};
+	
+		public UserBean (String fn, String ln, String un, String pw, String em){
+			this.firstName = fn;
+			this.lastName = ln;
+			this.userName = un;
+			this.password = pw;
+			this.emailAddress = em;
+		}
+	
+		@Id
+		@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="userSeq")
+		@SequenceGenerator(allocationSize=1,name="userSeq",sequenceName="USER_SEQ")
+		@Column(name="U_ID")
+		//@NotNull
+		private int U_ID;
+		
 		/*@DateTimeFormat(pattern="yyyy-MM-dd")
 		@NotNull(message="please enter your date of birth")
 		@Past(message="that's impossible")
 		private Date dateOfBirth;*/ 
+		
+		@Column(name="U_FIRST_NAME")
 		//@NotNull(message="please enter your first name")
 		private String firstName;
+		
+		@Column(name="U_LAST_NAME")
 		//@NotNull(message="please enter your last name")
 		private String lastName;
 		
+		@Column(name="U_USERNAME", nullable=false)
 		@Size(min=6, max=30)
 		@NotNull(message="please enter your userName")
 		private String userName;
 		
+		@Column(name="U_PASSWORD", nullable=false)
 		@NotNull
 		@Size(min=6, max=30)
 		private String password;
 		
 		private String password2;
 		
+		@Column(name="U_EMAIL")
 		//@NotNull(message="Please enter a valid email address")
 		//@Email
 		private String emailAddress;
-		//@NotNull
-		private int U_ID;
-		//@NotNull
-		private int UR_ID;
 		
 		//@NotNull
 		private String userRole;
+		
+		@OneToOne(mappedBy="user")
+		private UserRoleBean userrole;
+		
+		@OneToMany(mappedBy="user")
+		private List<AttendanceHistory> attendanceHistory;
+		
+		@OneToMany(mappedBy="user")
+		private List<RequestHistory> requestHistory;
 		
 		public String getFirstName() {
 			return firstName;
@@ -70,12 +104,6 @@ public class UserBean {
 		public void setU_ID(int u_ID) {
 			U_ID = u_ID;
 		}
-		public int getUR_ID() {
-			return UR_ID;
-		}
-		public void setUR_ID(int uR_ID) {
-			UR_ID = uR_ID;
-		}
 		public String getPassword2() {
 			return password2;
 		}
@@ -93,6 +121,22 @@ public class UserBean {
 		}
 		public void setUserRole(String userRole) {
 			this.userRole = userRole;
+		}
+
+		public List<AttendanceHistory> getAttendanceHistory() {
+			return attendanceHistory;
+		}
+
+		public void setAttendanceHistory(List<AttendanceHistory> attendanceHistory) {
+			this.attendanceHistory = attendanceHistory;
+		}
+
+		public List<RequestHistory> getRequestHistory() {
+			return requestHistory;
+		}
+
+		public void setRequestHistory(List<RequestHistory> requestHistory) {
+			this.requestHistory = requestHistory;
 		}
 		
 }
