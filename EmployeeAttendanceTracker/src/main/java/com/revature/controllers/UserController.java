@@ -1,9 +1,13 @@
 package com.revature.controllers;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +19,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.revature.beans.UserBean;
+import com.revature.beans.UserRoleBean;
 import com.revature.dao.DaoImpl;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-		
+	
+	@Autowired
+	DaoImpl userDao;
+	
 	@RequestMapping(value="/{firstName}/{lastName}",method=RequestMethod.GET)
 	public String getPerson(@PathVariable String firstName, @PathVariable String lastName, Model m) {
 		m.addAttribute("firstName",firstName);
@@ -118,17 +126,14 @@ public class UserController {
 	public String login(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 
 							@RequestParam(value="password", required=false) String password*/){
 		
-		//DaoImpl userDao = new DaoImpl();
-		/*UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
+		UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
 		
 		if (user != null){
 			return "emp";
 		}
 		else{
 			return "index";
-		}*/
-		
-		return "emp";
+		}
 		//this is where the db checking will go perhaps
 		/*if (br.hasErrors()){
 			Object errors = br.getAllErrors();

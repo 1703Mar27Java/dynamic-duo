@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 
@@ -14,14 +16,16 @@ import com.revature.beans.UserRoleBean;
 import com.revature.beans.UserBean;
 
 @Transactional
-@Repository
+
 public class DaoImpl implements Dao {
-
+	
+	
 	private SessionFactory sessionFactory;
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.sessionFactory = sessionFactory;
+	
+	public void setSessionFactory(SessionFactory mysessionFactory){
+		System.out.print("inside setter");
+		this.sessionFactory = mysessionFactory;
 	}
-
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -50,16 +54,22 @@ public class DaoImpl implements Dao {
 	}
 	
 	//hibernate
-	public UserBean retrieveUserByLoginInfo(String un, String pw) {
-			
-		Session sesh = sessionFactory.getCurrentSession();
+	public UserBean retrieveUserByLoginInfo(String un, String pw) {	
+		Session s;
+		try {
+		    s = sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+		    s = sessionFactory.openSession();
+		}
+		
 		UserBean user = null;
+		
 		List<UserBean> users = new ArrayList<UserBean>();
 			
-		System.out.println(sesh.isConnected());
-		if (sesh.isConnected()){
+		System.out.println(s.isConnected());
+		if (s.isConnected()){
 			System.out.println("connected");
-			users = sesh.createQuery("from ERS_USERS where u_username = :u_username").setString("u_username", un).list();
+			users = s.createQuery("from UserBean where userName = :u_username AND password = :u_password").setString("u_username", un).setString("u_password", pw).list();      
 		}
 		else{
 			System.out.println("Not connected");
@@ -71,8 +81,6 @@ public class DaoImpl implements Dao {
 		}
 			
 		/* commit and close session */
-			
-		sesh.close();
 			
 		return user;
 	}
