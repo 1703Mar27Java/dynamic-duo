@@ -1,5 +1,6 @@
 package com.revature.controllers;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.beans.EmpRequests;
 import com.revature.beans.UserBean;
 import com.revature.beans.UserRoleBean;
 import com.revature.dao.DaoImpl;
 
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
 
 import javax.annotation.PostConstruct;
 
@@ -162,6 +167,53 @@ public class UserController {
 
 			//AjaxResponseBody will be converted into json format and send back to the request.
 			return result;
+		}
+		
+		@RequestMapping(value = "/employees/allTemp", method=RequestMethod.POST)
+		//public @ResponseBody
+		public String getUsers(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Model m) {
+
+			List<UserBean> result = userDao.retrieveAllUser();
+		
+			
+					
+			UserBean bean = result.get(0);
+			
+			Map<String, String>[] userInfoArr = new HashMap[result.size()];
+			
+			List<String> userNames = new ArrayList<String>();
+			List<String> firstNames = new ArrayList<String>();
+			List<String> lastNames = new ArrayList<String>();
+			List<String> userIDs = new ArrayList<String>();
+			List<String> emailAddresses = new ArrayList<String>();
+			
+			for (int i = 0; i < result.size(); i++){
+				Map<String, String> userInfo = new HashMap<String, String>();
+				userNames.add(result.get(i).getUserName());
+				firstNames.add(result.get(i).getFirstName());
+				lastNames.add(result.get(i).getLastName());
+				userIDs.add(String.valueOf(result.get(i).getU_ID()));
+				emailAddresses.add(result.get(i).getEmailAddress());
+			}
+			
+			
+			
+			System.out.println("Result");
+			System.out.println(userInfoArr);
+			
+			if (result != null){
+				m.addAttribute("employees", result);
+				m.addAttribute("username", userNames);
+				m.addAttribute("firstName", firstNames);
+				m.addAttribute("lastName", lastNames);
+				m.addAttribute("userID", userIDs);
+				m.addAttribute("email", emailAddresses);
+				
+				return "tempEmps";
+			}
+			else{
+				return "manager";
+			}
 		}
 
 }

@@ -3,6 +3,10 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
+
 import java.util.Date;
 
 import javax.validation.constraints.*;
@@ -158,5 +162,15 @@ public class UserBean implements Serializable {
 		public void setUserrole(UserRoleBean userrole) {
 			this.userrole = userrole;
 		}
+
+		@Override
+		public String toString() {
+			return "UserBean [U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
+					+ emailAddress + ", userRole=" + userRole + ", uRoleID=" + uRoleID + ", userrole=" + userrole
+					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory + "]";
+		}
+
+		
 		
 }

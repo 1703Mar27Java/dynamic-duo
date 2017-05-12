@@ -121,17 +121,15 @@
 
 
 <div class="form-container">
- <h2>View A Single Request Record</h2>
+ <h2>View Users</h2>
  <br/>
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form">
-<form:form id = "ReqsByLastname" action="../user/employees/all" commandName="userForm">
+<form:form id = "GetEmployees" action="../user/employees/allTemp" commandName="userForm">
   <div class="form-group">
   <br/>
     <label for="username">Get all users</label>
-    <form:input class="form-control" path="U_ID" size="30"/>
-    <form:errors path="U_ID" cssClass="error" style="color:red; font-style:italic"/>
     <!--<input type="text" class="form-control" id="email">-->
   </div>
   <button type="submit" class="btn btn-default">Search</button>

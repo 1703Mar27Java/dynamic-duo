@@ -7,6 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p id="requests"></p>
 	${requests}
+	<p>Request_ID ${Request_ID}</p>
+	<p>Description ${Description}</p>
+	<p>End Date ${End_date}</p>
+	<p>Request Name ${Request_Name}</p>
+	<p>Start_Date ${Start_Date}</p>
+	<p>Resolved? ${Resolved}</p>
+	<p>Request Type ${Request_Type}</p>
+	<p>User ${User}</p>
 </body>
+<script>
+$(document).ready(function(){
+	$("#requests").text("hello");
+	//var requestID = "${Request_ID}";
+});
+</script>
 </html>

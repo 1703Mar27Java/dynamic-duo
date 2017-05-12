@@ -105,6 +105,7 @@ public class DaoImpl implements Dao {
 				System.out.println("Not connected");
 			}
 				
+			
 			/* commit and close session */
 				
 			return users;
