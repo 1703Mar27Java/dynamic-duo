@@ -28,7 +28,6 @@ public class DaoImpl implements Dao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<UserRoleBean> getUserrole() {
 		Session s = sessionFactory.getCurrentSession();
 		List<UserRoleBean> userrole = new ArrayList<UserRoleBean>();
@@ -37,16 +36,13 @@ public class DaoImpl implements Dao {
 	}
 	
 
-	@Override
 	public void createUsers(UserBean user) {
 		Session s = sessionFactory.getCurrentSession();
 		s.saveOrUpdate(user);
 		s.save(user);
-		
 	}
 
 
-	@Override
 	public void createUserRole(UserRoleBean userrole) {
 		Session s = sessionFactory.getCurrentSession();
 		s.saveOrUpdate(userrole);

@@ -62,8 +62,12 @@ public class UserBean implements Serializable {
 		//@Email
 		private String emailAddress;
 		
-		//@NotNull
+		@NotNull
 		private String userRole;
+		
+		@Column(name="USERROLE")
+		private int uRoleID;
+		
 		
 		@OneToOne(mappedBy="user")
 		private UserRoleBean userrole;
@@ -137,6 +141,22 @@ public class UserBean implements Serializable {
 
 		public void setRequestHistory(List<RequestHistory> requestHistory) {
 			this.requestHistory = requestHistory;
+		}
+
+		public int getuRoleID() {
+			return uRoleID;
+		}
+
+		public void setuRoleID(int uRoleID) {
+			this.uRoleID = uRoleID;
+		}
+
+		public UserRoleBean getUserrole() {
+			return userrole;
+		}
+
+		public void setUserrole(UserRoleBean userrole) {
+			this.userrole = userrole;
 		}
 		
 }

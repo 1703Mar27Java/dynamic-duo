@@ -12,7 +12,6 @@ public class EmpRequests {
 
 	public EmpRequests(){}
 	
-	
 	public EmpRequests(String reqName, Timestamp reqStartDate, Timestamp reqEndDate, String desc){
 		this.reqName = reqName;
 		this.reqStartDate = reqStartDate;
@@ -49,8 +48,9 @@ public class EmpRequests {
 	@Column(name="E_REQ_RESOLVER")
 	private int resolved;
 	
+	@Column(name="USER_U_ID")
+	private int uID;
 	
-
 	public int getReq_id() {
 		return req_id;
 	}
@@ -135,6 +135,14 @@ public class EmpRequests {
 		return "EmpRequests [req_id=" + req_id + ", user=" + user + ", requestType=" + requestType + ", reqName="
 				+ reqName + ", reqStartDate=" + reqStartDate + ", reqEndDate=" + reqEndDate + ", desc=" + desc
 				+ ", resolved=" + resolved + "]";
+	}
+
+	public int getuID() {
+		return uID;
+	}
+
+	public void setuID(int uID) {
+		this.uID = uID;
 	}
 
 	

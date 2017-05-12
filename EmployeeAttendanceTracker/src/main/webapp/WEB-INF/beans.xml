@@ -64,6 +64,10 @@
 		<property name="sessionFactory" ref="mySessionFactory"></property>
 	</bean>
 	
+	<bean id="myReqDao" class="com.revature.dao.RequestDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	
 	<!-- used to incorportate css and js -->
 	 <mvc:resources mapping="/resources/**" location="/resources/theme1/"
 	cache-period="31556926"/>

@@ -14,13 +14,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.beans.UserBean;
 import com.revature.beans.UserRoleBean;
 import com.revature.dao.DaoImpl;
+
+
+import javax.annotation.PostConstruct;
 
 @Controller
 @RequestMapping("/user")
@@ -129,21 +134,31 @@ public class UserController {
 		UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
 		
 		if (user != null){
-			return "emp";
+			if (user.getuRoleID() == 1){
+				return "emp";
+			}
+			else if (user.getuRoleID() == 2){
+				return "manager";
+			}
+			else return "index";
 		}
 		else{
 			return "index";
 		}
-		//this is where the db checking will go perhaps
-		/*if (br.hasErrors()){
-			Object errors = br.getAllErrors();
-			m.put("errors",errors);
-			return "index";
-		}else{
-			m.put("userName", userForm.getUserName());
-			m.put("password", userForm.getPassword());
-		}*/
-		//create (for a login) a loginService class 
-		//call authUser 
 	}
+	
+	//used for AJAX calls
+	// @ResponseBody, not necessary, since class is annotated with @RestController
+		// @RequestBody - Convert the json data into object (SearchCriteria) mapped by field name.
+		// @JsonView(Views.Public.class) - Optional, filters json data to display.
+		//@JsonView(Views.Public.class)
+		@RequestMapping(value = "/employees/all", method=RequestMethod.GET)
+		public List<UserBean> getSearchResultViaAjax() {
+
+			List<UserBean> result = userDao.retrieveAllUser();
+
+			//AjaxResponseBody will be converted into json format and send back to the request.
+			return result;
+		}
+
 }

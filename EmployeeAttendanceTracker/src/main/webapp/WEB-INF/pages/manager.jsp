@@ -50,17 +50,18 @@
 
 <div id="form-grid">
 <div class="form-container">
- <h2>View A Single Request Record</h2>
+ <h2>View Multiple Request Records</h2>
  <br/>
 <div class="row">
 
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form">
-<form:form id = "ReqsByLastname" action="../request/history" commandName="userForm">
+<form:form id = "ReqsByLastname" action="../request/history/all" commandName="userForm">
   <div class="form-group">
   <br/>
-    <label for="username">Input Employee Last Name:</label>
-    <form:input class="form-control" path="userName" size="30"/>
+    <label for="username">Input Employee ID:</label>
+    <form:input class="form-control" path="U_ID" size="30"/>
+    <form:errors path="U_ID" cssClass="error" style="color:red; font-style:italic"/>
     <!--<input type="text" class="form-control" id="email">-->
   </div>
   <button type="submit" class="btn btn-default">Search</button>
@@ -74,19 +75,23 @@
 <br/>
 
 <div class="form-container">
- <h2>View Multiple Request Records</h2>
+ <h2>View A Single Request Record</h2>
  <br/>
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form"> 
-<form>
+<form:form id = "ReqsByLastname" action="../request/history/recent" commandName="userForm">
   <div class="form-group">
-  <br/>  
+  <br/>
+    <label for="username">Input Employee ID:</label>
+    <form:input class="form-control" path="U_ID" size="30"/>
+    <form:errors path="U_ID" cssClass="error" style="color:red; font-style:italic"/>
+    <!--<input type="text" class="form-control" id="email">-->
   </div>
-  <button type="submit" class="btn btn-default">Display Records</button>
+  <button type="submit" class="btn btn-default">Search</button>
 <br/>
 <br/>
-</form>
+</form:form>
 <br/>
 <div class="col-md-4"></div>
 </div>
@@ -143,4 +148,30 @@
 
 </div><!-- end of container div for entire page -->
 </body>
+
+<script>
+$(document).ready(function(){		
+	//call user update ajax
+	$.ajax({
+		type : "GET",
+		contentType : "../users/employees/all",
+		url : "${home}search/api/getSearchResult",
+		data : JSON.stringify(data),
+		dataType : 'json',
+		timeout : 100000,
+		success : function(data) {
+			console.log("SUCCESS: ", data);
+			display(data);
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+			display(e);
+		},
+		done : function(e) {
+			console.log("DONE");
+		}
+	});
+});
+	
+	</script>
 </html>
