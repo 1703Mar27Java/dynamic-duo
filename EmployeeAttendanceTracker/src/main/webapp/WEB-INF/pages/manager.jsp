@@ -126,16 +126,18 @@
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4" id="form">
-<form>
+<form:form id = "ReqsByLastname" action="../user/employees/all" commandName="userForm">
   <div class="form-group">
   <br/>
-    <label for="username">Input Employee Last Name:</label>
-    <input type="text" class="form-control" id="email">
+    <label for="username">Get all users</label>
+    <form:input class="form-control" path="U_ID" size="30"/>
+    <form:errors path="U_ID" cssClass="error" style="color:red; font-style:italic"/>
+    <!--<input type="text" class="form-control" id="email">-->
   </div>
   <button type="submit" class="btn btn-default">Search</button>
 <br/>
 <br/>
-</form>
+</form:form>
 <br/>
 <div class="col-md-4"></div>
 </div>
@@ -149,29 +151,26 @@
 </div><!-- end of container div for entire page -->
 </body>
 
+<!-- AJAX Implementation -->
 <script>
-$(document).ready(function(){		
+$(document).ready(function(){
 	//call user update ajax
-	$.ajax({
-		type : "GET",
-		contentType : "../users/employees/all",
-		url : "${home}search/api/getSearchResult",
-		data : JSON.stringify(data),
-		dataType : 'json',
-		timeout : 100000,
-		success : function(data) {
-			console.log("SUCCESS: ", data);
-			display(data);
-		},
-		error : function(e) {
-			console.log("ERROR: ", e);
-			display(e);
-		},
-		done : function(e) {
-			console.log("DONE");
-		}
-	});
+		$.ajax({
+			type : "GET",
+            url : "../user/employees/all",
+            success : function(data) {
+                $('#result').html(data);
+                alert("Data: " + data);
+            },
+			error : function(e) {
+				console.log("ERROR: ", e);
+				display(e);
+			},
+			done : function(e) {
+				console.log("DONE");
+			}
+        });
 });
 	
-	</script>
+</script>
 </html>

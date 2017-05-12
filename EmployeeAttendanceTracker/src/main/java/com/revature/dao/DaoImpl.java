@@ -87,8 +87,28 @@ public class DaoImpl implements Dao {
 		}
 
 		public List<UserBean> retrieveAllUser() {
-			// TODO Auto-generated method stub
-			return null;
+			Session s;
+			try {
+			    s = sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+			    s = sessionFactory.openSession();
+			}
+			
+			List<UserBean> users = new ArrayList<UserBean>();
+				
+			System.out.println(s.isConnected());
+			if (s.isConnected()){
+				System.out.println("connected");
+				users = s.createQuery("from UserBean").list();
+			}
+			else{
+				System.out.println("Not connected");
+			}
+				
+			/* commit and close session */
+				
+			return users;
+
 		}
 
 		public void updateUser(UserBean user) {

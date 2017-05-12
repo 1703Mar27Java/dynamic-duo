@@ -153,9 +153,12 @@ public class UserController {
 		// @JsonView(Views.Public.class) - Optional, filters json data to display.
 		//@JsonView(Views.Public.class)
 		@RequestMapping(value = "/employees/all", method=RequestMethod.GET)
-		public List<UserBean> getSearchResultViaAjax() {
+		//public @ResponseBody
+		public List<UserBean> getSearchResultViaAjax(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m) {
 
 			List<UserBean> result = userDao.retrieveAllUser();
+			System.out.println("Result");
+			System.out.println(result);
 
 			//AjaxResponseBody will be converted into json format and send back to the request.
 			return result;
