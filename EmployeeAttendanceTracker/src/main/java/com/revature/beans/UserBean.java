@@ -66,7 +66,8 @@ public class UserBean implements Serializable {
 		//@Email
 		private String emailAddress;
 		
-		@NotNull
+		//@NotNull
+		@Column
 		private String userRole;
 		
 		@Column(name="USERROLE")
@@ -165,10 +166,10 @@ public class UserBean implements Serializable {
 
 		@Override
 		public String toString() {
-			return "UserBean [U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+			return "U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
 					+ emailAddress + ", userRole=" + userRole + ", uRoleID=" + uRoleID + ", userrole=" + userrole
-					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory + "]";
+					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory;
 		}
 
 		

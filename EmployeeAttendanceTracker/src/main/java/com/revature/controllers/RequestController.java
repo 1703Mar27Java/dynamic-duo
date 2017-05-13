@@ -85,4 +85,18 @@ public class RequestController {
 			return "manager";
 		}
 	}
+	
+	@RequestMapping(value="/history/status",method=RequestMethod.POST)
+	public String changeStatus(Model m, @RequestParam(value="U_ID", required=false) int id){
+		
+		EmpRequests request = requestDao.retrieveSingleRequest(id);
+		
+		if (request != null){
+			m.addAttribute("mostRecentRequest", request);
+			return "tempSingleRequest";
+		}
+		else{
+			return "manager";
+		}
+	}
 }

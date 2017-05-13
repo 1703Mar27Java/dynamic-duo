@@ -70,8 +70,26 @@ public class EmpRequests {
 	}
 
 
-	public RequestType getRequestType() {
-		return requestType;
+	public String getRequestType() {
+		if (requestType.getR_id() == 1){
+			return "Vacation";
+		}
+		else if (requestType.getR_id() == 2){
+			return "Unpaid Personal Day";
+		}
+		else if (requestType.getR_id() == 3){
+			return "Medical Leave";
+		}
+		else if (requestType.getR_id() == 4){
+			return "Military Leave";
+		}
+		else if (requestType.getR_id() == 5){
+			return "Two Week Notice";
+		}
+		else if (requestType.getR_id() == 6){
+			return "Other";
+		}
+		return "NA";
 	}
 
 
@@ -120,8 +138,17 @@ public class EmpRequests {
 	}
 
 
-	public int getResolved() {
-		return resolved;
+	public String getResolved() {
+		if (resolved == 1){
+			return "Pending";
+		}
+		else if (resolved == 2){
+			return "Approved";
+		}
+		else if (resolved == 3){
+			return "Denied";
+		}
+		return "NA";
 	}
 
 
@@ -132,9 +159,9 @@ public class EmpRequests {
 
 	@Override
 	public String toString() {
-		return "EmpRequests [req_id=" + req_id + ", user=" + user + ", requestType=" + requestType + ", reqName="
-				+ reqName + ", reqStartDate=" + reqStartDate + ", reqEndDate=" + reqEndDate + ", desc=" + desc
-				+ ", resolved=" + resolved + "]";
+		return req_id + "," + user + "," + requestType + ","
+				+ reqName + "," + reqStartDate + "," + reqEndDate + "," + desc
+				+ "," + resolved;
 	}
 
 	public int getuID() {

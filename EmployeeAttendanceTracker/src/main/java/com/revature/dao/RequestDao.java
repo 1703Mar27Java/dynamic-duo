@@ -18,4 +18,5 @@ public interface RequestDao {
 	public EmpRequests retrieveRequestsByLastName(String lastName);
 	public List<EmpRequests> retrieveRequestByEmpID(int id);
 	public EmpRequests retrieveSingleRequest(int id);
+	public void changeRequestStatus(int id);
 }

@@ -119,6 +119,9 @@ public class UserController {
 						m.put("email", userForm.getEmailAddress());
 						m.put("userRole", userForm.getUserRole());
 						
+						DaoImpl userDao = new DaoImpl();
+						userDao.createUsers(userForm);
+						
 						if ((userForm.getUserRole()).equals("Employee")){
 							return "emp";
 						}

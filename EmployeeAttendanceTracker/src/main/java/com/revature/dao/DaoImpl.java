@@ -37,9 +37,19 @@ public class DaoImpl implements Dao {
 	
 
 	public void createUsers(UserBean user) {
-		Session s = sessionFactory.getCurrentSession();
-		s.saveOrUpdate(user);
-		s.save(user);
+		Session s;
+		/*try {
+		    s = sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+		    s = sessionFactory.openSession();
+		}*/
+		
+		/*if (s.isConnected()){
+			//s.saveOrUpdate(user);
+			//s.save(user);
+		}
+		else{
+			System.out.println("Not connected");*/
 	}
 
 
