@@ -1,4 +1,6 @@
-Controllers\UserController.class
 com\revature\util\ConnectionUtil.class
+com\revature\controllers\UserController.class
+com\revature\controllers\AttendanceController.class
+com\revature\controllers\RequestController.class
 com\revature\beans\UserRoleBean.class
 com\revature\beans\UserBean.class

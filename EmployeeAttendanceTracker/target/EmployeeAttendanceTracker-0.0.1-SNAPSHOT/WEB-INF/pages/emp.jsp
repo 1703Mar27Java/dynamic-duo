@@ -41,12 +41,10 @@
 <br/>
 
 <div class="container">
-<form method="POST" action="../attendance/history/all">
   <button type="submit" class="btn btn-default">View Timeclock History</button>
-</form>
-  
 <p>Employee  info would go here to check out their clock in/clock out </p>
-<h3>Welcome ${userForm.userName}! You have logged in successfully.${userForm}</h3>
+<h3>Welcome ${userForm.userName}! You have logged in successfully.</h3>
+<h3>You are a ${userForm.userRole}</h3>
 
 </div>
 
@@ -56,15 +54,14 @@
  <br/>
 <div class="row">
 <div class="col-md-4"></div>
-<div class="col-md-4" id="form"> 
-
-<!-- form for making new request -->
- <form method="POST" action="../request/makeRequest">
+<div class="col-md-4" id="form">
+ 
+<form>
   <div class="form-group">
   <br/>
 
-    <label for="req">Select Type of Request</label>
-	<select class="form-control"  id="type" name="requestType">
+     <label for="req">Select Type of Request</label>
+	<select class="form-control"  id="role">
       <option>Vacation</option>
       <option>Unpaid Personal Day</option>
       <option>Medical Leave</option>
@@ -75,18 +72,22 @@
    </div>
   <div class="form-group">
     <label for="days">Start Date:</label>
-    <input class="form-control" rows="5" id="reqeust" name="reqStartDate">
+    <input class="form-control" rows="5" id="reqeust">
+
   </div>
   <div class="form-group">
     <label for="days">Return Date:</label>
-    <input class="form-control" rows="5" id="reqeust" name="reqEndDate">
- 	</div>
-  	<div class="form-group">
+    <input class="form-control" rows="5" id="reqeust">
+ </div>
+  <div class="form-group">
     <label for="reason">Reason for Request:</label>
-    <textarea class="form-control" rows="5" id="reqeust" name="desc"></textarea>
+    <textarea class="form-control" rows="5" id="reqeust"></textarea>
+ 
   <br/>
   <br>
+
   <button type="submit" class="btn btn-default">Submit</button>
+<br/>
 <br/>
 </form>
 </div>
@@ -95,53 +96,7 @@
 </div>
 </div>
 
+
 </div>
 </body>
-
-<script>
-
-$(document).ready(function(){
-			//call user update ajax
-				$.ajax({
-					type : "GET",
-		            url : "../request",
-		            success : function(data) {
-		                $('#result').html(data);
-		                alert("Data: " + data);
-		            },
-					error : function(e) {
-						console.log("ERROR: ", e);
-						display(e);
-					},
-					done : function(e) {
-						console.log("DONE");
-					}
-		        });
-		});
-		
-		$("#hiddenIDForm").val(1);
-		$("#Vacation").on("click",function(){
-			  $("#hiddenRoleForm").val('1');
-		})
-		$("#PDay").on("click",function(){
-			  $("#hiddenRoleForm").val('2');
-		})
-		
-		$("#Medical").on("click",function(){
-			  $("#hiddenRoleForm").val('3');
-		})
-		$("#Military").on("click",function(){
-			  $("#hiddenRoleForm").val('4');
-		})
-		
-		$("#TwoWeek").on("click",function(){
-			  $("#hiddenRoleForm").val('5');
-		})
-		
-		$("#Other").on("click",function(){
-			  $("#hiddenRoleForm").val('6');
-		})
-	}
-});
-</script>
 </html>
