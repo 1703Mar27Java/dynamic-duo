@@ -35,7 +35,6 @@ public class RequestType implements Serializable {
 	@Column(name="RT_DURATION")
 	private int duration;
 
-
 	public int getR_id() {
 		return r_id;
 	}

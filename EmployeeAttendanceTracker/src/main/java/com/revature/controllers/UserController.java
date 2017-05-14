@@ -51,6 +51,10 @@ public class UserController {
 	public String enterPersonInfo(Map<String, Object> m){
 		UserBean userForm = new UserBean();
 		m.put("userForm", userForm);
+		
+		EmpRequests requestForm = new EmpRequests();
+		m.put("requestForm", requestForm);
+		
 		//m.addAttribute("person",new UserBean());
 		return "index";
 	}
@@ -114,13 +118,12 @@ public class UserController {
 						return "index";
 					}else{
 					
+						userDao.createUsers(userForm);
+						
 						m.put("lname", userForm.getLastName());
 						m.put("fname", userForm.getFirstName());
 						m.put("email", userForm.getEmailAddress());
-						m.put("userRole", userForm.getUserRole());
-						
-						DaoImpl userDao = new DaoImpl();
-						userDao.createUsers(userForm);
+						m.put("userRole", userForm.getUserRole());	
 						
 						if ((userForm.getUserRole()).equals("Employee")){
 							return "emp";
@@ -177,8 +180,6 @@ public class UserController {
 		public String getUsers(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Model m) {
 
 			List<UserBean> result = userDao.retrieveAllUser();
-		
-			
 					
 			UserBean bean = result.get(0);
 			

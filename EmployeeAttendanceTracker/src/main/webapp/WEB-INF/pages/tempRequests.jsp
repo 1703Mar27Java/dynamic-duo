@@ -78,11 +78,22 @@
 			</td>
 		</tr>
 	</table>
+	<div id="dialog">
+		<div id="innerDialog"></div>
+		<button id = "Approve">Approve</button>
+		<button id = "Deny">Deny</button>
+	</div>
+	
+	<div id="approvedDeclined"></div>
 	
 </body>
 <script>
 
 $(document).ready(function(){
+	
+	$("#dialog").hide();
+	$("#approvedDeclined").hide();
+	
 	var requestID = "${Request_ID}";
 	requestID = requestID.replace('[','');
 	requestID = requestID.replace(']','');
@@ -139,6 +150,7 @@ $(document).ready(function(){
 		index++;
 	}
 	
+	var tempID = "";
 	for (var i = 0; i < desc.length; i++){
 		alert(res[i]);
 		if (res[i].search("Approved")){
@@ -158,7 +170,12 @@ $(document).ready(function(){
 			var temp = ($(this).html()).charAt(n+4);
 			alert(($(this).html()).charAt(n+4));
 			reiId = temp;
+			tempID = this.id.split('w');
 			
+			//temp
+			$("#innerDialog").text("hello");
+			$("#dialog").fadeIn(3000);
+			//temp
 			$.post("GetRequests", {
 				id: temp,
 			},
@@ -169,8 +186,51 @@ $(document).ready(function(){
 			});
 		});
 	}
-	
-	$("#description").text(desc[1]);
+	$("#Approve").click(function(){
+		$("#dialog").hide();
+		alert("approved");
+		//send email and change table
+		$.post("/history/status", {
+			choice: "Approved",
+			id: parserInt(tempID),
+		},
+		function(data, status){
+			$("#approvedDeclined").text("Approved");
+			$("#approvedDeclined").show();
+			$("#approvedDeclined").fadeOut(3000, function(){
+				location.reload();
+			});
+		});
+	});
+	$("#Deny").click(function(){
+		alert(parseInt(tempID[1]));
+		var tempIDInt = parseInt(tempID[1]);
+		$("#dialog").hide();
+		var obj = {};
+		alert("denied");
+		
+		//data: "name=" + name + "&education=" + education,
+		//just change table
+		
+		//needs a'finishin'
+		$.ajax({
+			type : "POST",
+            url : "../history/status",
+            data: {'id': tempIDInt, 'status': 'Denied' },
+            success : function(data) {
+                $('#result').html(data);
+                alert("Data: " + data);
+            },
+			error : function(e) {
+				console.log("ERROR: ", e);
+				display(e);
+			},
+			done : function(e) {
+				console.log("DONE");
+			}
+        });
+	});
+
 	
 });
 

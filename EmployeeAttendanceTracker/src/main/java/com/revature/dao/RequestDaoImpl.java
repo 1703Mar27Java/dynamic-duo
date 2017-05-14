@@ -53,7 +53,7 @@ public class RequestDaoImpl implements RequestDao {
 		}
 		
 		if (s.isConnected()){
-			s.saveOrUpdate(req.getReq_id());
+			s.saveOrUpdate(req);
 			s.save(req);
 		}
 	}
@@ -67,7 +67,7 @@ public class RequestDaoImpl implements RequestDao {
 		return null;
 	}
 	
-	public void changeRequestStatus(int id){
+	public void changeRequestStatus(int id, String choice){
 		//open session
 		Session s;
 		try {

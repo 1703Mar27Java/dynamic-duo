@@ -110,9 +110,7 @@ public class UserBean implements Serializable {
 		public int getU_ID() {
 			return U_ID;
 		}
-		public void setU_ID(int u_ID) {
-			U_ID = u_ID;
-		}
+	
 		public String getPassword2() {
 			return password2;
 		}
@@ -125,13 +123,26 @@ public class UserBean implements Serializable {
 		public void setEmailAddress(String emailAddress) {
 			this.emailAddress = emailAddress;
 		}
-		public String getUserRole() {
-			return userRole;
-		}
 		public void setUserRole(String userRole) {
 			this.userRole = userRole;
 		}
-
+		
+		public String getUserRole() {
+			if (userRole != null){
+				if (userRole.equals("Manager")){
+					uRoleID = 2;
+				}
+				else if (userRole.equals("Employee")){
+					uRoleID = 1;
+				}
+			}
+			else{
+				uRoleID = 0;
+			}
+			
+			return userRole;
+		}
+		
 		public List<AttendanceHistory> getAttendanceHistory() {
 			return attendanceHistory;
 		}

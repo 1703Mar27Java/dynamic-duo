@@ -1,13 +1,17 @@
 package com.revature.beans;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 
 @Entity
 @Table(name="EMP_REQUESTS")
+@Component(value="Request")
 public class EmpRequests {
 
 	public EmpRequests(){}
@@ -18,7 +22,14 @@ public class EmpRequests {
 		this.reqEndDate = reqEndDate;
 		this.desc = desc;
 		
-}
+		java.util.Date utilDate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(utilDate);
+        cal.set(Calendar.MILLISECOND, 0);        //comment.setDate(new java.sql.Timestamp(cal.getTimeInMillis()));
+        System.out.println(cal);
+		this.reqStartDate = new java.sql.Timestamp(cal.getTimeInMillis());
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="reqIdSeq")
 	@SequenceGenerator(allocationSize=1,name="reqIdSeq",sequenceName="REQID_SEQ")
@@ -93,8 +104,9 @@ public class EmpRequests {
 	}
 
 
-	public void setRequestType(RequestType requestType) {
-		this.requestType = requestType;
+	public void setRequestType(String requestType) {
+		this.requestType = new RequestType();
+		this.requestType.setR_id(Integer.parseInt(requestType));
 	}
 
 

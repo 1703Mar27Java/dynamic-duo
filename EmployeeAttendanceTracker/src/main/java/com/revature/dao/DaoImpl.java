@@ -29,27 +29,29 @@ public class DaoImpl implements Dao {
 	
 	@SuppressWarnings("unchecked")
 	public List<UserRoleBean> getUserrole() {
-		Session s = sessionFactory.getCurrentSession();
+		/*Session s = sessionFactory.getCurrentSession();
 		List<UserRoleBean> userrole = new ArrayList<UserRoleBean>();
-		userrole = s.createQuery("from UserRole").list();
-		return userrole;
+		userrole = s.createQuery("from UserRole").list();*/
+		return null;//userrole;
 	}
 	
 
 	public void createUsers(UserBean user) {
 		Session s;
-		/*try {
+		try {
 		    s = sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {
 		    s = sessionFactory.openSession();
-		}*/
+		}
 		
-		/*if (s.isConnected()){
-			//s.saveOrUpdate(user);
-			//s.save(user);
+		if (s.isConnected()){
+			System.out.println("connected");
+			s.saveOrUpdate(user);
+			s.save(user);
 		}
 		else{
-			System.out.println("Not connected");*/
+			System.out.println("Not connected");
+		}
 	}
 
 
