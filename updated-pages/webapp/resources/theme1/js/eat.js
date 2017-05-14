@@ -32,3 +32,20 @@ $(document).ready(function(){
 	});
 });
 
+
+$(document).ready(function(){
+	$("#multiReq").hide();
+	
+	$("#multi").click(function(){
+		$("#singleReq").hide();
+		$("#single").hide();
+		$("#multi").hide();
+		$("#multiReq").show();
+		$("#back").show();
+		$("#message").text("View Mulitiple Records");	
+		
+	});
+	
+});
+
+

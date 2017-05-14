@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Managers</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -21,6 +20,7 @@
 <link href="${styleCss}" rel="stylesheet" />
 <spring:url value="/resources/js/eat.js" var="eatJs" />
 <script src="${eatJs}"></script>
+<title>Managers</title>
 </head>
 <body>
 	<div class="container" align="center">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<br /> <br />
-	</div>	
+
 		<div class="container">
 			<button type="submit" class="btn btn-default">View Timeclock
 				History</button>
@@ -158,13 +158,13 @@
 							<!-- end of single request record form -->
 
 						</div>
-					</div>	<!-- end of form-grid -->
+					</div>	<!-- end of form-grid --
+
+					</div>	<!-- end of container div for entire page -->
 
 
-
-
-					</div>
-					<!-- end of container div for entire page -->
+<br/>
+<br/>				
 </body>
 
 <!-- AJAX Implementation -->
@@ -187,5 +187,9 @@
 			}
 		});
 	});
+	
+	
+	
+	
 </script>
 </html>
