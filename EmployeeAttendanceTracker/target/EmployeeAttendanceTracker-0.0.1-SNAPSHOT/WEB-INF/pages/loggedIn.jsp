@@ -10,11 +10,18 @@
 </head>
 <body>
 	Logged In
+<<<<<<< HEAD
 	<div id = "welcome">
 		<h2>Welcome ${userName}</h2>
 		<p>You are a ${userRole}</p>
 	</div>
 	<form action="Logout" method="post">
+=======
+    <div align="center">
+        <h2>Welcome ${userForm.userName}! You have logged in successfully.</h2>
+    </div>
+	<form id = "Logout" method="GET" action="log" commandName="user">
+>>>>>>> HackworthA
 		<input class = "lbl" type="submit" value="Logout" />
 	</form>
 </body>

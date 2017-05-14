@@ -23,12 +23,23 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="lib" path="C:/Users/Gabe/Downloads/etsviewer.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Gabe/Downloads/ojdbc7.jar"/>
+=======
+>>>>>>> HackworthA
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/Users/Amelia/.m2/repository/ojdbc/ojdbc/7/ojdbc-7.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+>>>>>>> HackworthA
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

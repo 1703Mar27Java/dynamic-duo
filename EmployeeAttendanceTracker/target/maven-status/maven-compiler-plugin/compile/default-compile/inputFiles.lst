@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\util\ConnectionUtil.java
 C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\Controllers\UserController.java
 C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\beans\UserRoleBean.java
+=======
+C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\controllers\AttendanceController.java
+C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\util\ConnectionUtil.java
+C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\controllers\RequestController.java
+C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\beans\UserRoleBean.java
+C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\controllers\UserController.java
+>>>>>>> HackworthA
 C:\Users\Gabe\Desktop\dynamic-duo\EmployeeAttendanceTracker\src\main\java\com\revature\beans\UserBean.java

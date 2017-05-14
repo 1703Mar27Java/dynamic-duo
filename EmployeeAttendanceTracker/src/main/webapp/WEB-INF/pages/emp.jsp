@@ -1,15 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<<<<<<< HEAD
 <html>
 <head>
+=======
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html>
+<head>
+
+>>>>>>> HackworthA
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<<<<<<< HEAD
 <script src="eat.js"></script>
 <link rel="stylesheet" href="style.css"/>
+=======
+	<spring:url value="/resources/css/style.css" var="styleCss" />
+<link href="${styleCss}" rel="stylesheet" />
+<spring:url value="/resources/js/eat.js" var="eatJs" />
+<script src="${eatJs}"></script>
+>>>>>>> HackworthA
 <title>Employee</title>
 </head>
 <body>
@@ -37,7 +52,10 @@
 <p>Employee  info would go here to check out their clock in/clock out </p>
 <h3>Welcome ${userForm.userName}! You have logged in successfully.</h3>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> HackworthA
 </div>
 
 
@@ -74,7 +92,11 @@
   <div class="form-group">
     <label for="reason">Reason for Request:</label>
     <textarea class="form-control" rows="5" id="reqeust"></textarea>
+<<<<<<< HEAD
  
+=======
+ </div>
+>>>>>>> HackworthA
   <br/>
   <br>
 

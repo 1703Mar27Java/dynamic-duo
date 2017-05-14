@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<<<<<<< HEAD
+=======
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+>>>>>>> HackworthA
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +13,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<<<<<<< HEAD
 <script src="eat.js"></script>
 <link rel="stylesheet" href="style.css"/>
+=======
+<spring:url value="/resources/css/style.css" var="styleCss" />
+ <link href="${styleCss}" rel="stylesheet" />  
+
+ <spring:url value="/resources/js/eat.js" var="eatJs" />  
+ <script src="${eatJs}"></script>  
+>>>>>>> HackworthA
 <title>Contact Us</title>
 </head>
 <body>

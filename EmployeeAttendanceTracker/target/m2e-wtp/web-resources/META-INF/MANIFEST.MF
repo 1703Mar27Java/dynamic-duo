@@ -1,7 +1,11 @@
 Manifest-Version: 1.0
 Implementation-Title: EmployeeAttendanceTracker
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: Gabe
+=======
+Built-By: Amelia
+>>>>>>> HackworthA
 Implementation-Vendor-Id: com.revature
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://projects.spring.io/spring-boot/EmployeeAtte
