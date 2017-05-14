@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${employees}
 	<p>Username: ${username}</p>
 	<p>First Name: ${firstName}</p>
 	<p>Last Name: ${lastName}</p>

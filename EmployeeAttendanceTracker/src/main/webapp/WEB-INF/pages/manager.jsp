@@ -39,12 +39,16 @@
 <br/>
 <br/>
 <div class="container">
-  <button type="submit" class="btn btn-default">View Timeclock History</button><br/>
+	<form method="POST" action="../attendance/history/all">
+  		<button type="submit" class="btn btn-default">View Timeclock History</button><br/>
+	</form>
 <span>Manager would be able to view their own clock in/clock out here</span>
 </div>
 <br/>
 <div class="container">
-  <button type="submit" class="btn btn-default">View Employee Timeclock History</button><br/>
+	<form method="POST" action="../attendance/history/all">
+  		<button type="submit" class="btn btn-default">View Employee Timeclock History</button><br/>
+    </form>
 <span>Manager would be able to view their employees clock in/clock out here</span>
 </div>
 

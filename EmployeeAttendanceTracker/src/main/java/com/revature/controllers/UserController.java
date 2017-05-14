@@ -123,12 +123,12 @@ public class UserController {
 						m.put("lname", userForm.getLastName());
 						m.put("fname", userForm.getFirstName());
 						m.put("email", userForm.getEmailAddress());
-						m.put("userRole", userForm.getUserRole());	
+						m.put("userRole", userForm.getUserRole());
 						
-						if ((userForm.getUserRole()).equals("Employee")){
+						if ((userForm.getUserRole()).getUrRole().equals("Employee")){
 							return "emp";
 						}
-						else if (userForm.getUserRole().equals("Manager")){
+						else if (userForm.getUserRole().getUrRole().equals("Manager")){
 							return "manager";
 						}
 						
@@ -145,10 +145,11 @@ public class UserController {
 		UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
 		
 		if (user != null){
-			if (user.getuRoleID() == 1){
+			int uRole = user.getUserrole().getUrID();
+			if (uRole == 2){
 				return "emp";
 			}
-			else if (user.getuRoleID() == 2){
+			else if (uRole == 1){
 				return "manager";
 			}
 			else return "index";
@@ -206,7 +207,7 @@ public class UserController {
 			System.out.println(userInfoArr);
 			
 			if (result != null){
-				m.addAttribute("employees", result);
+				//m.addAttribute("employees", result);
 				m.addAttribute("username", userNames);
 				m.addAttribute("firstName", firstNames);
 				m.addAttribute("lastName", lastNames);

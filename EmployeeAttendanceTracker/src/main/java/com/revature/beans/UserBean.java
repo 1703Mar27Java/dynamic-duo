@@ -67,11 +67,11 @@ public class UserBean implements Serializable {
 		private String emailAddress;
 		
 		//@NotNull
-		@Column
+		/*@Column
 		private String userRole;
 		
 		@Column(name="USERROLE")
-		private int uRoleID;
+		private int uRoleID;*/
 		
 		
 		@OneToOne(mappedBy="user")
@@ -123,24 +123,12 @@ public class UserBean implements Serializable {
 		public void setEmailAddress(String emailAddress) {
 			this.emailAddress = emailAddress;
 		}
-		public void setUserRole(String userRole) {
-			this.userRole = userRole;
+		public void setUserRole(UserRoleBean userRole) {
+			this.userrole = userRole;
 		}
 		
-		public String getUserRole() {
-			if (userRole != null){
-				if (userRole.equals("Manager")){
-					uRoleID = 2;
-				}
-				else if (userRole.equals("Employee")){
-					uRoleID = 1;
-				}
-			}
-			else{
-				uRoleID = 0;
-			}
-			
-			return userRole;
+		public UserRoleBean getUserRole() {
+			return userrole;
 		}
 		
 		public List<AttendanceHistory> getAttendanceHistory() {
@@ -159,14 +147,6 @@ public class UserBean implements Serializable {
 			this.requestHistory = requestHistory;
 		}
 
-		public int getuRoleID() {
-			return uRoleID;
-		}
-
-		public void setuRoleID(int uRoleID) {
-			this.uRoleID = uRoleID;
-		}
-
 		public UserRoleBean getUserrole() {
 			return userrole;
 		}
@@ -179,7 +159,7 @@ public class UserBean implements Serializable {
 		public String toString() {
 			return "U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
-					+ emailAddress + ", userRole=" + userRole + ", uRoleID=" + uRoleID + ", userrole=" + userrole
+					+ emailAddress + ", userRole=" + userrole + ", uRoleID=" + ", userrole=" + userrole
 					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory;
 		}
 
