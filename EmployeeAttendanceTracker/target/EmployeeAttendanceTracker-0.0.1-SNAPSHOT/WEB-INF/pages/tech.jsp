@@ -20,10 +20,23 @@
 <div class="container-fluid" align="center">
 <div class="row">
 <ul class="nav nav-tabs" role="tablist">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<li><a href="index.jsp">Home</a></li>
+<li><a href="contact.jsp">Contact Us</a> </li>
+<li><a href="tech.jsp">Technical Assistance</a> </li>
+<li><a href="about.jsp">About Us</a> </li>
+=======
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
 <li><a href="<%=request.getContextPath() %>/user/log">Home</a></li>
 <li><a href="<%=request.getContextPath() %>/user/contact">Contact Us</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/tech">Technical Assistance</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/about">About Us</a> </li>
+<<<<<<< HEAD
+=======
+>>>>>>> HackworthA
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
 </ul>
 </div>
 </div>

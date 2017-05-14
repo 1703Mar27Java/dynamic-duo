@@ -25,9 +25,18 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
 	
 	<!-- used to incorportate css and js -->
 	 <mvc:resources mapping="/resources/**" location="/resources/theme1/"
 	cache-period="31556926"/>
+<<<<<<< HEAD
+=======
+>>>>>>> HackworthA
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
 
 </beans>

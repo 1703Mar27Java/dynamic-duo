@@ -28,9 +28,18 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
 </welcome-file-list>
+<<<<<<< HEAD
+=======
+>>>>>>> HackworthA
+>>>>>>> ae5fd93af0f615a2ba909936497816cb67a62317
 </web-app>

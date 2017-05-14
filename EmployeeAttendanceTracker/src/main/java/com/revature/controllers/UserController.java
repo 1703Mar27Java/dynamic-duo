@@ -51,10 +51,6 @@ public class UserController {
 	public String enterPersonInfo(Map<String, Object> m){
 		UserBean userForm = new UserBean();
 		m.put("userForm", userForm);
-		
-		EmpRequests requestForm = new EmpRequests();
-		m.put("requestForm", requestForm);
-		
 		//m.addAttribute("person",new UserBean());
 		return "index";
 	}
@@ -118,17 +114,18 @@ public class UserController {
 						return "index";
 					}else{
 					
-						userDao.createUsers(userForm);
-						
 						m.put("lname", userForm.getLastName());
 						m.put("fname", userForm.getFirstName());
 						m.put("email", userForm.getEmailAddress());
 						m.put("userRole", userForm.getUserRole());
 						
-						if ((userForm.getUserRole()).getUrRole().equals("Employee")){
+					//	DaoImpl userDao = new DaoImpl();
+						userDao.createUsers(userForm);
+						
+						if ((userForm.getUserRole()).equals("Employee")){
 							return "emp";
 						}
-						else if (userForm.getUserRole().getUrRole().equals("Manager")){
+						else if (userForm.getUserRole().equals("Manager")){
 							return "manager";
 						}
 						
@@ -145,11 +142,10 @@ public class UserController {
 		UserBean user = userDao.retrieveUserByLoginInfo(userForm.getUserName(), userForm.getPassword());
 		
 		if (user != null){
-			int uRole = user.getUserrole().getUrID();
-			if (uRole == 2){
+			if (user.getuRoleID() == 1){
 				return "emp";
 			}
-			else if (uRole == 1){
+			else if (user.getuRoleID() == 2){
 				return "manager";
 			}
 			else return "index";
@@ -181,6 +177,8 @@ public class UserController {
 		public String getUsers(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Model m) {
 
 			List<UserBean> result = userDao.retrieveAllUser();
+		
+			
 					
 			UserBean bean = result.get(0);
 			
@@ -207,7 +205,7 @@ public class UserController {
 			System.out.println(userInfoArr);
 			
 			if (result != null){
-				//m.addAttribute("employees", result);
+				m.addAttribute("employees", result);
 				m.addAttribute("username", userNames);
 				m.addAttribute("firstName", firstNames);
 				m.addAttribute("lastName", lastNames);
@@ -215,10 +213,9 @@ public class UserController {
 				m.addAttribute("email", emailAddresses);
 				
 				return "tempEmps";
-			}
-			else{
+			} else{
 				return "manager";
 			}
 		}
-
+		
 }

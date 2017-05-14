@@ -17,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name="USERS")
 @Component(value="User")
+
 public class UserBean implements Serializable {
 	
 		public UserBean(){};
@@ -40,7 +41,7 @@ public class UserBean implements Serializable {
 		@NotNull(message="please enter your date of birth")
 		@Past(message="that's impossible")
 		private Date dateOfBirth;*/ 
-		
+		//@NotNull(message="please enter your first name")
 		@Column(name="U_FIRST_NAME")
 		//@NotNull(message="please enter your first name")
 		private String firstName;
@@ -74,15 +75,25 @@ public class UserBean implements Serializable {
 		private int uRoleID;*/
 		
 		
+		//@NotNull
+		private int UR_ID;
+		
+		//@NotNull
+	//	@Column
+	//	private String userRole;
+		
+		@Column(name="USERROLE")
+		private int uRoleID;
+			
 		@OneToOne(mappedBy="user")
-		private UserRoleBean userrole;
+		private UserRoleBean userRole;
 		
 		@OneToMany(mappedBy="user")
 		private List<AttendanceHistory> attendanceHistory;
 		
 		@OneToMany(mappedBy="user")
 		private List<RequestHistory> requestHistory;
-		
+
 		public String getFirstName() {
 			return firstName;
 		}
@@ -120,17 +131,24 @@ public class UserBean implements Serializable {
 		public String getEmailAddress() {
 			return emailAddress;
 		}
+
+		public int getUR_ID() {
+			return UR_ID;
+		}
+		public void setUserRole(UserRoleBean userRole) {
+			this.userRole = userRole;
+		}
+
 		public void setEmailAddress(String emailAddress) {
 			this.emailAddress = emailAddress;
 		}
-		public void setUserRole(UserRoleBean userRole) {
-			this.userrole = userRole;
+/*		public String getUserRole() {
+			return userRole;
 		}
-		
-		public UserRoleBean getUserRole() {
-			return userrole;
-		}
-		
+		public void setUserRole(String userRole) {
+			this.userRole = userRole;  
+		}*/
+
 		public List<AttendanceHistory> getAttendanceHistory() {
 			return attendanceHistory;
 		}
@@ -147,22 +165,27 @@ public class UserBean implements Serializable {
 			this.requestHistory = requestHistory;
 		}
 
-		public UserRoleBean getUserrole() {
-			return userrole;
+		public int getuRoleID() {
+			return uRoleID;
 		}
 
-		public void setUserrole(UserRoleBean userrole) {
-			this.userrole = userrole;
+		public void setuRoleID(int uRoleID) {
+			this.uRoleID = uRoleID;
+		}
+
+		public UserRoleBean getUserRole() {
+			return userRole;
+		}
+
+		public void setUserrole(UserRoleBean userRole) {
+			this.userRole = userRole;
 		}
 
 		@Override
 		public String toString() {
-			return "U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+			return "UserBean [U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
-					+ emailAddress + ", userRole=" + userrole + ", uRoleID=" + ", userrole=" + userrole
-					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory;
+					+ emailAddress + ", uRoleID=" + uRoleID + ", userRole=" + userRole + ", attendanceHistory="
+					+ attendanceHistory + ", requestHistory=" + requestHistory + "]";
 		}
-
-		
-		
 }

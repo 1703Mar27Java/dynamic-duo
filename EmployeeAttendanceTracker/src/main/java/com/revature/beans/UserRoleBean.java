@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -23,29 +24,23 @@ public class UserRoleBean implements Serializable {
 	@PrimaryKeyJoinColumn
 	private UserBean user;
 
-	
 	public UserRoleBean(){
 		super();
+	}
+	public int getUrID() {
+		return urID;
+	}
+
+	public UserRoleBean(String urRole){
+		this.urRole = urRole;
 	}
 	
 	public int getUrID() {
 		return urID;
 	}
-	
-	public UserRoleBean(String urRole){
-		this.urRole = urRole;
-	}
-
-	public void setUrID(int urID) {
-		this.urID = urID;
-	}
 
 	public String getUrRole() {
 		return urRole;
-	}
-
-	public void setUrRole(String urRole) {
-		this.urRole = urRole;
 	}
 	
 	public static long getSerialversionuid() {
