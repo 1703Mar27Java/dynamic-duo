@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,18 +19,23 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<spring:url value="/resources/css/style.css" var="styleCss" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ <spring:url value="/resources/css/style.css" var="styleCss" />
+
 <link href="${styleCss}" rel="stylesheet" />
 <spring:url value="/resources/js/eat.js" var="eatJs" />
 <script src="${eatJs}"></script>
-<title>Technical Assistance</title>
+ 
+<title>All Employees</title>
 </head>
 <body>
-	<div class="container" align="center">
+<div class="container" align="center">
 		<h1>
 			<strong>Employee Attendance Tracker</strong>
 		</h1>
 		<br /> <br />
+
 		<div class="container-fluid" align="center">
 			<div class="row">
 				<ul class="nav nav-tabs" role="tablist">
@@ -41,39 +49,36 @@
 				</ul>
 			</div>
 		</div>
-	</div>	
-		<br /> <br />
+		<br /> 
+
+<div class="container">
+<h2>Records for All Employees</h2>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
 
 
-		<div class="form-container">
-			<div class="row">
+${employees}
+	<p>Username: ${username}</p>
+	<p>First Name: ${firstName}</p>
+	<p>Last Name: ${lastName}</p>
+	<p>User ID: ${userID}</p>
+	<p>Email Address: ${email}</p>
+	
 
-				<div class="col-md-4" id="contact">
-					<h1>
-						Our Technicians <br />Are Here <br/>to Assist You
-					</h1>
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s, when an unknown printer took a
-						galley of type and scrambled it to make a type specimen book. It
-						has survived not only five centuries, but also the leap into
-						electronic typesetting, remaining essentially unchanged. It was
-						popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop
-						publishing software like Aldus PageMaker including versions of
-						Lorem Ipsum.
-					<p>
-					<h3>
-						Call our tech service line<br /> at 888-888-8888
-					</h3>
-				</div>
 
-				<div class="col-md-8">
-					<img
-						src="https://talkroute.com/wp-content/uploads/2016/03/woman-on-phone-e1457624562884.jpg" />
-				</div>
+</div>
+<div class="col-md-4"></div>
+</div>
+</div>
+	
+<table>
+<tr>
+<c:forEach items="${employees}" var="userForm">
+		<td></td>
+</c:forEach>
+</tr>
+</table>
 
-			</div>
-		</div>
 </body>
 </html>

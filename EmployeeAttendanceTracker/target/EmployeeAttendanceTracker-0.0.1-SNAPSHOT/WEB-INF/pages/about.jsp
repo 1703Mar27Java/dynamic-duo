@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +10,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="eat.js"></script>
-<link rel="stylesheet" href="style.css"/>
+<spring:url value="/resources/css/style.css" var="styleCss" />
+ <link href="${styleCss}" rel="stylesheet" />  
+
+ <spring:url value="/resources/js/eat.js" var="eatJs" />  
+ <script src="${eatJs}"></script>  
 <title>About Us</title>
 </head>
 <body>
@@ -17,7 +22,7 @@
 <h1><strong>Employee Attendance Tracker</strong></h1>
 <br/>
 <br/>
-
+</div>
 <div class="container-fluid" align="center">
 <div class="row">
 <ul class="nav nav-tabs" role="tablist">
@@ -41,6 +46,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
 </div>
 <div class="col-md-4"></div>
+</div>
 </div>
 
 
