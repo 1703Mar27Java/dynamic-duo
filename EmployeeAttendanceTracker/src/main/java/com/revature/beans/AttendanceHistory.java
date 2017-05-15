@@ -114,8 +114,8 @@ public class AttendanceHistory implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AttendanceHistory [ah=" + ah + ", user=" + user + ", date=" + date + ", clockIn=" + clockIn
-				+ ", clockOut=" + clockOut + ", diff=" + diff + ", late=" + late + "]";
+		return "ah=" + ah + ", user=" + user + ", date=" + date + ", clockIn=" + clockIn
+				+ ", clockOut=" + clockOut + ", diff=" + diff + ", late=" + late;
 	}
 
 	

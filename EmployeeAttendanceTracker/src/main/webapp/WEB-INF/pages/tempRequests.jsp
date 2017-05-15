@@ -150,6 +150,8 @@ $(document).ready(function(){
 		index++;
 	}
 	
+	$("td").css("text-align", "center");
+	
 	var tempID = "";
 	for (var i = 0; i < desc.length; i++){
 		alert(res[i]);

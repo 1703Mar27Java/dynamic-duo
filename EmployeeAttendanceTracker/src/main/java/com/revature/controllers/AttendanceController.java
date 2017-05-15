@@ -26,43 +26,39 @@ public class AttendanceController {
 	
 	@RequestMapping(value="/history",method=RequestMethod.POST)
 	public String getAttendHistory(Model m, @RequestParam(value="U_ID", required=false) int id){
+		
 		List<AttendanceHistory> result = histDao.getAttendHistoryByUser(id);
-		//List<AttendanceHistory> result = AttendanceDaoImpl
 		
 		Map<String, String>[] userInfoArr = new HashMap[result.size()];
-		
-		/*List<String> reqID = new ArrayList<String>();
-		List<String> description = new ArrayList<String>();
-		List<String> end = new ArrayList<String>();
-		List<String> ReqName = new ArrayList<String>();
-		List<String> start = new ArrayList<String>();
-		List<String> resolver = new ArrayList<String>();
-		List<String> reqType = new ArrayList<String>();
-		List<String> userID = new ArrayList<String>();
+	
+		List<String> attdUserID = new ArrayList<String>();
+		List<String> attdHistID = new ArrayList<String>();
+		List<String> clockIn = new ArrayList<String>();
+		List<String> clockOut = new ArrayList<String>();
+		List<String> date = new ArrayList<String>();
+		List<String> diff = new ArrayList<String>();
+		List<String> tardy = new ArrayList<String>();
 		
 		for (int i = 0; i < result.size(); i++){
 			Map<String, String> userInfo = new HashMap<String, String>();
-			reqID.add(String.valueOf(result.get(i).getReq_id()));
-			description.add(result.get(i).getDesc());
-			end.add(String.valueOf(result.get(i).getReqEndDate()));
-			ReqName.add(result.get(i).getReqName());
-			start.add(String.valueOf(result.get(i).getReqStartDate()));
-			resolver.add(String.valueOf(result.get(i).getResolved()));
-			reqType.add(String.valueOf(result.get(i).getRequestType()));
-			userID.add(String.valueOf(result.get(i).getuID()));
-		}*/
+			
+			attdUserID.add(String.valueOf(result.get(0).getUser().getU_ID()));
+			attdHistID.add(String.valueOf(result.get(0).getAh()));
+			clockIn.add(String.valueOf(result.get(0).getClockIn()));
+			clockOut.add(String.valueOf(result.get(0).getClockOut()));
+			diff.add(String.valueOf(result.get(0).getDiff()));
+			tardy.add(String.valueOf(result.get(0).getLate()));
+		}
 		
 		if (result != null){
-			/*m.addAttribute("requests", result);
-			m.addAttribute("Request_ID", reqID);
-			m.addAttribute("Description", description);
-			m.addAttribute("End_date", end);
-			m.addAttribute("Request_Name", ReqName);
-			m.addAttribute("Start_Date", start);
-			m.addAttribute("Resolved", resolver);
-			m.addAttribute("Request_Type", reqType);
-			m.addAttribute("User", userID);*/
-			m.addAttribute("AttendHist", result);
+			m.addAttribute("attendHistID", attdHistID);
+			m.addAttribute("attendClockIn", clockIn);
+			m.addAttribute("attendClockout", clockOut);
+			m.addAttribute("attendDate", date);
+			m.addAttribute("attendDiff", diff);
+			m.addAttribute("attendTardy", tardy);
+			m.addAttribute("attendUserID", attdUserID);
+			
 			return "tempAttendanceHist";
 		}
 		else{
@@ -76,39 +72,36 @@ public class AttendanceController {
 		List<AttendanceHistory> result = histDao.getAllAttendHistory();
 		
 		Map<String, String>[] userInfoArr = new HashMap[result.size()];
-		
-		/*List<String> reqID = new ArrayList<String>();
-		List<String> description = new ArrayList<String>();
-		List<String> end = new ArrayList<String>();
-		List<String> ReqName = new ArrayList<String>();
-		List<String> start = new ArrayList<String>();
-		List<String> resolver = new ArrayList<String>();
-		List<String> reqType = new ArrayList<String>();
-		List<String> userID = new ArrayList<String>();
+	
+		List<String> attdUserID = new ArrayList<String>();
+		List<String> attdHistID = new ArrayList<String>();
+		List<String> clockIn = new ArrayList<String>();
+		List<String> clockOut = new ArrayList<String>();
+		List<String> date = new ArrayList<String>();
+		List<String> diff = new ArrayList<String>();
+		List<String> tardy = new ArrayList<String>();
 		
 		for (int i = 0; i < result.size(); i++){
 			Map<String, String> userInfo = new HashMap<String, String>();
-			reqID.add(String.valueOf(result.get(i).getReq_id()));
-			description.add(result.get(i).getDesc());
-			end.add(String.valueOf(result.get(i).getReqEndDate()));
-			ReqName.add(result.get(i).getReqName());
-			start.add(String.valueOf(result.get(i).getReqStartDate()));
-			resolver.add(String.valueOf(result.get(i).getResolved()));
-			reqType.add(String.valueOf(result.get(i).getRequestType()));
-			userID.add(String.valueOf(result.get(i).getuID()));
-		}*/
+			
+			attdUserID.add(String.valueOf(result.get(0).getUser().getU_ID()));
+			attdHistID.add(String.valueOf(result.get(0).getAh()));
+			clockIn.add(String.valueOf(result.get(0).getClockIn()));
+			clockOut.add(String.valueOf(result.get(0).getClockOut()));
+			date.add(String.valueOf(result.get(0).getDate()));
+			diff.add(String.valueOf(result.get(0).getDiff()));
+			tardy.add(String.valueOf(result.get(0).getLate()));
+		}
 		
 		if (result != null){
-			/*m.addAttribute("requests", result);
-			m.addAttribute("Request_ID", reqID);
-			m.addAttribute("Description", description);
-			m.addAttribute("End_date", end);
-			m.addAttribute("Request_Name", ReqName);
-			m.addAttribute("Start_Date", start);
-			m.addAttribute("Resolved", resolver);
-			m.addAttribute("Request_Type", reqType);
-			m.addAttribute("User", userID);*/
-			m.addAttribute("AttendHist", result.get(0).getDiff());
+			m.addAttribute("attendHistID", attdHistID);
+			m.addAttribute("attendClockIn", clockIn);
+			m.addAttribute("attendClockout", clockOut);
+			m.addAttribute("attendDate", date);
+			m.addAttribute("attendDiff", diff);
+			m.addAttribute("attendTardy", tardy);
+			m.addAttribute("attendUserID", attdUserID);
+			
 			return "tempAttendanceHist";
 		}
 		else{
