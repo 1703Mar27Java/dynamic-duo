@@ -157,10 +157,10 @@ public class UserBean implements Serializable {
 
 		@Override
 		public String toString() {
-			return "U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+			return "U_ID=" + U_ID/* + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
 					+ emailAddress + ", userRole=" + userrole + ", uRoleID=" + ", userrole=" + userrole.getUrID()
-					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory;
+					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory*/;
 		}
 
 		

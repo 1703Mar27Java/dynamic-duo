@@ -29,7 +29,7 @@
 <div class="container-fluid" align="center">
 <div class="row">
 <ul class="nav nav-tabs" role="tablist">
-<li><a href="<%=request.getContextPath() %>/user/log">Home</a></li>
+<li><a href="<%=request.getContextPath() %>/user/log">Logout</a></li>
 <li><a href="<%=request.getContextPath() %>/user/contact">Contact Us</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/tech">Technical Assistance</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/about">About Us</a> </li>
@@ -42,14 +42,12 @@
 	<form method="POST" action="../attendance/history/all">
   		<button type="submit" class="btn btn-default">View Timeclock History</button><br/>
 	</form>
-<span>Manager would be able to view their own clock in/clock out here</span>
 </div>
 <br/>
 <div class="container">
 	<form method="POST" action="../attendance/history/all">
   		<button type="submit" class="btn btn-default">View Employee Timeclock History</button><br/>
     </form>
-<span>Manager would be able to view their employees clock in/clock out here</span>
 </div>
 
 <div id="form-grid">

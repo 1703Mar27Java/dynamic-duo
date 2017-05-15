@@ -55,7 +55,7 @@ public class RequestDaoImpl implements RequestDao {
 		if (s.isConnected()){
 			s.beginTransaction();
 			s.saveOrUpdate(req);
-			s.save(req);
+			//s.save(req);
 			s.getTransaction().commit();
 			s.close();
 		}
@@ -86,7 +86,7 @@ public class RequestDaoImpl implements RequestDao {
 		System.out.println(s.isConnected());
 		if (s.isConnected()){
 			System.out.println("connected");
-			requests = s.createQuery("from EmpRequests where uID = :id").setInteger("id", id).list();      
+			requests = s.createQuery("from EmpRequests where uID = :id").setInteger("id", id).list();
 		}
 		else{
 			System.out.println("Not connected");
@@ -94,6 +94,20 @@ public class RequestDaoImpl implements RequestDao {
 		
 		if(!requests.isEmpty()){
 			req = requests.get(0);
+			if (choice.equals("Pending")){
+				req.setResolved(1);
+			}
+			if (choice.equals("Approved")){
+				req.setResolved(2);
+			}
+			if (choice.equals("Denied")){
+				req.setResolved(3);
+			}
+			s.beginTransaction();
+			s.saveOrUpdate(req);
+			//s.save(req);
+			s.getTransaction().commit();
+			s.close();
 		}
 				
 	}
@@ -112,7 +126,7 @@ public class RequestDaoImpl implements RequestDao {
 		
 		if (s.isConnected()){
 			System.out.println("connected");
-			requests = s.createQuery("from EmpRequests where uID = :id").setInteger("id", id).list();      
+			requests = s.createQuery("from EmpRequests").list();      
 		}
 		else{
 			System.out.println("Not connected");

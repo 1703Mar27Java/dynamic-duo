@@ -154,23 +154,19 @@ $(document).ready(function(){
 	
 	var tempID = "";
 	for (var i = 0; i < desc.length; i++){
-		alert(res[i]);
 		if (res[i].search("Approved")){
 			$("#reqRow" +i).css("background-color", "green");
 			alert("green");
 		}
 		else if (res[i].search("Denied")){
-			alert(res[i]);
 			$("#reqRow" +i).css("background-color", "red");
 		}
 		else if (res[i].search("Pending")){
 			$("#reqRow" +i).css("background-color", "white");
 		}
 		$("#reqRow" +i).click(function(){
-			alert($(this).html());
 			var n = ($(this).html()).indexOf("rID=");
 			var temp = ($(this).html()).charAt(n+4);
-			alert(($(this).html()).charAt(n+4));
 			reiId = temp;
 			tempID = this.id.split('w');
 			
@@ -190,8 +186,9 @@ $(document).ready(function(){
 	}
 	$("#Approve").click(function(){
 		$("#dialog").hide();
-		alert("approved");
+		alert("denied");
 		//send email and change table
+		
 		$.post("/history/status", {
 			choice: "Approved",
 			id: parserInt(tempID),
@@ -205,7 +202,6 @@ $(document).ready(function(){
 		});
 	});
 	$("#Deny").click(function(){
-		alert(parseInt(tempID[1]));
 		var tempIDInt = parseInt(tempID[1]);
 		$("#dialog").hide();
 		var obj = {};

@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.security.Timestamp;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import com.revature.beans.UserBean;
 import com.revature.dao.DaoImpl;
 import com.revature.dao.RequestDaoImpl;
 import com.revature.beans.EmpRequests;
+import com.revature.beans.RequestType;
 
 
 @Controller
@@ -54,7 +56,7 @@ public class RequestController {
 	@RequestMapping(value="/history/all",method=RequestMethod.POST)
 	public String getReqAllHistory(Model m, @RequestParam(value="U_ID", required=false) int id){
 		
-		List<EmpRequests> result = requestDao.retrieveRequestByEmpID(id);
+		List<EmpRequests> result = requestDao.retrieveRequestByEmpID(1);
 		
 		Map<String, String>[] userInfoArr = new HashMap[result.size()];
 		
@@ -76,7 +78,7 @@ public class RequestController {
 			start.add(String.valueOf(result.get(i).getReqStartDate()));
 			resolver.add(String.valueOf(result.get(i).getResolved()));
 			reqType.add(String.valueOf(result.get(i).getRequestType()));
-			userID.add(String.valueOf(result.get(i).getuID()));
+			userID.add(String.valueOf(result.get(i).getUser()));
 		}
 		
 		if (result != null){
@@ -88,6 +90,9 @@ public class RequestController {
 			m.addAttribute("Start_Date", start);
 			m.addAttribute("Resolved", resolver);
 			m.addAttribute("Request_Type", reqType);
+			if (userID == null){
+				userID.add("1");
+			}
 			m.addAttribute("User", userID);
 			return "tempRequests";
 		}
@@ -126,7 +131,7 @@ public class RequestController {
 	
 	@RequestMapping(value="/makeRequest",method=RequestMethod.POST)
 	public String makeRequest(Model model, @RequestParam String requestType, 
-			@RequestParam String reqStartDate,  
+			@RequestParam String reqStartDate,
 			@RequestParam String reqEndDate,
 			@RequestParam String desc){
 		/*
@@ -139,10 +144,13 @@ public class RequestController {
 		 * uID
 		 * req_id
 		 */
+		RequestType reqTyp = new RequestType();
+		String[] typ = requestType.split(",");
+		reqTyp.setR_id(Integer.parseInt(typ[1]));
         
         EmpRequests req = new EmpRequests();
         req.setDesc(desc);
-        req.setRequestType("1");
+        req.setRequestType(Integer.parseInt(typ[1]));
       
 		requestDao.makeRequest(req);
 		return "emp";

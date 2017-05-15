@@ -59,9 +59,6 @@ public class EmpRequests {
 	@Column(name="E_REQ_RESOLVER")
 	private int resolved;
 	
-	@Column(name="USER_U_ID")
-	private int uID;
-	
 	public int getReq_id() {
 		return req_id;
 	}
@@ -104,9 +101,9 @@ public class EmpRequests {
 	}
 
 
-	public void setRequestType(String requestType) {
+	public void setRequestType(int requestType) {
 		this.requestType = new RequestType();
-		this.requestType.setR_id(Integer.parseInt(requestType));
+		this.requestType.setR_id(requestType);
 	}
 
 
@@ -174,14 +171,6 @@ public class EmpRequests {
 		return req_id + "," + user + "," + requestType + ","
 				+ reqName + "," + reqStartDate + "," + reqEndDate + "," + desc
 				+ "," + resolved;
-	}
-
-	public int getuID() {
-		return uID;
-	}
-
-	public void setuID(int uID) {
-		this.uID = uID;
 	}
 
 	

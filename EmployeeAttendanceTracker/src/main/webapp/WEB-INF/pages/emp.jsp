@@ -30,7 +30,7 @@
 <div class="container-fluid" align="center">
 <div class="row">
 <ul class="nav nav-tabs" role="tablist">
-<li><a href="<%=request.getContextPath() %>/user/log">Home</a></li>
+<li><a href="<%=request.getContextPath() %>/user/log">Logout</a></li>
 <li><a href="<%=request.getContextPath() %>/user/contact">Contact Us</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/tech">Technical Assistance</a> </li>
 <li><a href="<%=request.getContextPath() %>/user/about">About Us</a> </li>
@@ -46,7 +46,7 @@
 </form>
   
 <p>Employee  info would go here to check out their clock in/clock out </p>
-<h3>Welcome ${userForm.userName}! You have logged in successfully.${userForm}</h3>
+<h3>Welcome ${userForm.userName}! You have logged in successfully</h3>
 
 </div>
 
@@ -65,12 +65,13 @@
 
     <label for="req">Select Type of Request</label>
 	<select class="form-control"  id="type" name="requestType">
-      <option>Vacation</option>
-      <option>Unpaid Personal Day</option>
-      <option>Medical Leave</option>
-      <option>Military Leave</option>
-      <option>Two Week Notice</option>
-      <option>Other</option>
+      <option id="Vacation">Vacation</option>
+      <option id="PersonalDay">Unpaid Personal Day</option>
+      <option id="Medical">Medical Leave</option>
+      <option id="Military">Military Leave</option>
+      <option id="TwoWeeks">Two Week Notice</option>
+      <option id="Other">Other</option>
+      <input class = "type" type = "hidden" name = "requestType" value = "1">
   </select>
    </div>
   <div class="form-group">
@@ -102,7 +103,7 @@
 
 $(document).ready(function(){
 			//call user update ajax
-				$.ajax({
+				/*$.ajax({
 					type : "GET",
 		            url : "../request",
 		            success : function(data) {
@@ -116,32 +117,29 @@ $(document).ready(function(){
 					done : function(e) {
 						console.log("DONE");
 					}
-		        });
-		});
+		        });*/
 		
-		$("#hiddenIDForm").val(1);
 		$("#Vacation").on("click",function(){
-			  $("#hiddenRoleForm").val('1');
+			  $(".type").val('1');
 		})
-		$("#PDay").on("click",function(){
-			  $("#hiddenRoleForm").val('2');
+		$("#PersonalDay").on("click",function(){
+			  $(".type").val('2');
 		})
 		
 		$("#Medical").on("click",function(){
-			  $("#hiddenRoleForm").val('3');
+			  $(".type").val('3');
 		})
 		$("#Military").on("click",function(){
-			  $("#hiddenRoleForm").val('4');
+			  $(".type").val('4');
 		})
 		
-		$("#TwoWeek").on("click",function(){
-			  $("#hiddenRoleForm").val('5');
+		$("#TwoWeeks").on("click",function(){
+			  $(".type").val('5');
 		})
 		
 		$("#Other").on("click",function(){
-			  $("#hiddenRoleForm").val('6');
+			  $(".type").val('6');
 		})
-	}
 });
 </script>
 </html>
