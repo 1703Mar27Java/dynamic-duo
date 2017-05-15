@@ -53,8 +53,11 @@ public class RequestDaoImpl implements RequestDao {
 		}
 		
 		if (s.isConnected()){
+			s.beginTransaction();
 			s.saveOrUpdate(req);
 			s.save(req);
+			s.getTransaction().commit();
+			s.close();
 		}
 	}
 

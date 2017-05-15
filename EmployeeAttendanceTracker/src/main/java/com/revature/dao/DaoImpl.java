@@ -16,7 +16,6 @@ import com.revature.beans.UserRoleBean;
 import com.revature.beans.UserBean;
 
 @Transactional
-
 public class DaoImpl implements Dao {
 	
 	
@@ -46,8 +45,11 @@ public class DaoImpl implements Dao {
 		
 		if (s.isConnected()){
 			System.out.println("connected");
+			s.beginTransaction();
 			s.saveOrUpdate(user);
 			s.save(user);
+			s.getTransaction().commit();
+			s.close();
 		}
 		else{
 			System.out.println("Not connected");
@@ -57,8 +59,10 @@ public class DaoImpl implements Dao {
 
 	public void createUserRole(UserRoleBean userrole) {
 		Session s = sessionFactory.getCurrentSession();
-		s.saveOrUpdate(userrole);
+		s.beginTransaction();
 		s.save(userrole);
+		s.getTransaction().commit();
+		s.close();
 	}
 	
 	//hibernate

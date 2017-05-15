@@ -105,7 +105,6 @@ public class UserController {
 				return "newUser";
 	}
 	
-	//Capitol building singalong
 	//register
 		@RequestMapping(value="/newUser",method=RequestMethod.POST)
 		public String setNewUser(@Valid @ModelAttribute("userForm") UserBean userForm, BindingResult br, Map<String, Object> m/*,  @RequestParam(value="userName", required=false) String userName, 

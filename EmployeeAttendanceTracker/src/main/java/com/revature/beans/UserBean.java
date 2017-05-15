@@ -33,7 +33,7 @@ public class UserBean implements Serializable {
 		@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="userSeq")
 		@SequenceGenerator(allocationSize=1,name="userSeq",sequenceName="USER_SEQ")
 		@Column(name="U_ID")
-		//@NotNull
+		@NotNull
 		private int U_ID;
 		
 		/*@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -159,7 +159,7 @@ public class UserBean implements Serializable {
 		public String toString() {
 			return "U_ID=" + U_ID + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 					+ userName + ", password=" + password + ", password2=" + password2 + ", emailAddress="
-					+ emailAddress + ", userRole=" + userrole + ", uRoleID=" + ", userrole=" + userrole
+					+ emailAddress + ", userRole=" + userrole + ", uRoleID=" + ", userrole=" + userrole.getUrID()
 					+ ", attendanceHistory=" + attendanceHistory + ", requestHistory=" + requestHistory;
 		}
 
