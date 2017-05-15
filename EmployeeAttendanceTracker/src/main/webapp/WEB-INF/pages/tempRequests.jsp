@@ -156,7 +156,6 @@ $(document).ready(function(){
 	for (var i = 0; i < desc.length; i++){
 		if (res[i].search("Approved")){
 			$("#reqRow" +i).css("background-color", "green");
-			alert("green");
 		}
 		else if (res[i].search("Denied")){
 			$("#reqRow" +i).css("background-color", "red");
@@ -166,12 +165,13 @@ $(document).ready(function(){
 		}
 		$("#reqRow" +i).click(function(){
 			var n = ($(this).html()).indexOf("rID=");
+			
 			var temp = ($(this).html()).charAt(n+4);
 			reiId = temp;
 			tempID = this.id.split('w');
 			
 			//temp
-			$("#innerDialog").text("hello");
+			$("#innerDialog").text("Approve or Deny");
 			$("#dialog").fadeIn(3000);
 			//temp
 			$.post("GetRequests", {
@@ -217,7 +217,6 @@ $(document).ready(function(){
             data: {'id': tempIDInt, 'status': 'Denied' },
             success : function(data) {
                 $('#result').html(data);
-                alert("Data: " + data);
             },
 			error : function(e) {
 				console.log("ERROR: ", e);
